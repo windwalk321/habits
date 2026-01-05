@@ -8,7 +8,6 @@ export default defineConfig({
     plugins: [
         laravel({
             input: ['resources/js/app.ts'],
-            ssr: 'resources/js/ssr.ts',
             refresh: true,
         }),
         tailwindcss(),
@@ -24,4 +23,16 @@ export default defineConfig({
             },
         }),
     ],
+    server: {
+        // dev-only config
+        host: '0.0.0.0',
+        port: 5173,
+        strictPort: true,
+        hmr: {
+            host: '172.29.195.86',
+        },
+        cors: {
+            origin: 'http://172.29.195.86:8000',
+        },
+    },
 });
